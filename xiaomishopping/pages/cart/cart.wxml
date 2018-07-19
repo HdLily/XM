@@ -1,0 +1,48 @@
+<!--pages/cart/cart.wxml-->
+<view class="page">
+    <view class="weui-msg" wx:if="{{isEmpty}}">
+        <view class="weui-msg__icon-area">
+            <image src="../../image/cart/cc-cart-gray.png" />
+        </view>
+        <view class="weui-msg__text-area">
+            <view class="weui-msg__title">购物车还是空的</view>
+        </view>
+        <view class="weui-msg__opr-area">
+            <view class="weui-btn-area">
+                <button class="weui-btn" bindtap="goTo" type="primary" style="background-color: #F83F0D">到小米商城逛逛</button>
+            </view>
+        </view>
+    </view>
+    <view class="cart-box" wx:else>
+        <view class="cart-list" wx:for="{{carts}}" wx:key="{{index}}">
+            <icon wx:if="{{item.selected}}" type="success" color="red" data-index="{{index}}" class="cart-pro-select" bindtap="selectList"
+            />
+            <icon wx:else type="circle" class="cart-pro-select" data-index="{{index}}" bindtap="selectList" />
+            <navigator>
+                <image class="cart-image" src="{{item.image}}" />
+            </navigator>
+            <text class="cart-pro-name">{{item.title}}</text>
+            <text class="cart-pro-price">￥{{item.price}}</text>
+            <view class="cart-count-box">
+                <text class="cart-count-down" bindtap="minusCount" data-index="{{index}}">-</text>
+                <text class="cart-count-num">{{item.num}}</text>
+                <text class="cart-count-add" bindtap="addCount" data-index="{{index}}">+</text>
+            </view>
+        </view>
+    </view>
+    <view class="cart-footer">
+        <icon wx:if="{{selectAllStatus}}" data-index="{{index}}" type="success" class="total-select" color="red" bindtap="selectAll" />
+        <icon wx:else type="circle" class="total-select" color="red" bindtap="selectAll" />
+        <view class="select-box">
+            <text class="cart-total-select">全选</text>
+            
+            <text class="get-total">合计:</text>
+            <view class="select-box-list">
+                <text class="cart-total-price">{{totalPrice}}元</text>
+            </view>
+                <button class="pay"  bindtap="payAll" data-index="{{index}}" style="background: #F83F0D; border-radius: 0; color: #fff;">结算({{item.number}})</button>
+
+        </view>
+    </view>
+   
+</view>

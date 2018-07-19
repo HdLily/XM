@@ -1,0 +1,98 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+    <!-- 从后台读取数据，未获得数据呈现的页面 -->
+    <view class="loading-wrap" wx:if="{{app.globalData.isLoading}}">
+        <view class="loading-inner">
+            <image class="loading-img" src="../.. /image/loading.gif"></image>
+            <button class="loading-title" loading="true">加载中</button>
+        </view>
+    </view>
+
+    <!-- 从后台读取数据，获取数据呈现的界面 -->
+    <view wx:else>
+
+        <!-- 搜索框 -->
+        <view class="section searchBox">
+           <!-- 搜索框，白色背景区域 -->
+           <view class="search-outer" bindtap="moveToSearch" hover-class="bind-search-area">
+               <!-- 搜索框， 内容区域 -->
+               <view class="search-inner">
+                   <image class="icon-search" lazy-load="{{true}}" src="http://github.com/lxs24sxl/readme_add_pic/raw/master/wx_mi_images/common/icon_search.png"></image>
+                   <text class="text">搜索商品</text>
+               </view>
+           </view>
+        </view>
+
+        <!-- 轮播图 -->
+        <swiper class="section section-banner" indicator-dots="true" indicator-color="rgba(0, 0, 0, .1)" indicator-active-color="#fff">
+            <block class="banner-outer" >
+                <swiper-item class="banner-inner">
+                    <image class="banner-images" src="http://github.com/lxs24sxl/readme_add_pic/raw/master/wx_mi_images/index/banner/banner.jpg"></image>
+                </swiper-item>
+            </block>
+        </swiper>
+
+          <!-- 首页导航列表 -->
+          <view class="section section-cells">
+              <view class="cells-list">
+
+                <view wx:for="{{indexNavData}}" wx:key="indexData" class="cells-item" bindtap="navigateTap">
+                    <image bindtap="test1" src="{{item.imgSrc}}" class="item-images item-phone" mode="aspectFill" lazy-load="{{true}}"></image>
+                    <text class="item-text">{{item.title}}</text>
+                </view>
+
+              </view>
+          </view>
+
+          <!-- 首页活动列表 -->
+          <view class="section section-main">
+              <view class="main-list">
+
+                <view class="main-item">
+                    <image class="main-image" lazy-load="{{true}}" src="http://github.com/lxs24sxl/readme_add_pic/raw/master/wx_mi_images/index/cells/main1.png"></image>
+                </view>
+                <view class="main-item">
+                    <image class="main-image" lazy-load="{{true}}" src="http://github.com/lxs24sxl/readme_add_pic/raw/master/wx_mi_images/index/cells/main2.png" ></image>
+                </view>
+
+
+
+              </view>
+          </view>
+
+          <!-- 首页主要信息 -->
+          <view class="section section-box" >
+            <block wx:for="{{goods}}" wx:key="{{item.id}}" >
+                <view class="cate-box" id="{{item.id}}">
+                    <view class="cate-banner">
+                        <image src="{{item.banner}}" />
+                    </view>
+                    <view class="cate-title">
+                        <text>{{item.cate}}</text>
+                    </view>
+                    <view class="product">
+                        <view class="product-list" wx:for="{{item.detail}}" wx:key="{{index}}" wx:for-item="product" data-index="{{index}}" bindtap="toDetailTap">
+                            <image src="{{product.thumb}}" />
+                            <view class="product_name">
+                                <text>{{product.name}}</text>
+                            </view>
+                            <view class="product_desc">
+                                <text>{{product.desc}}</text>
+                            </view>
+                            <view class="price">
+                             <view class="product_price">
+                                 <text>{{product.price}}</text>
+                             </view>
+                             <view class="product_lprice">
+                                 <text>{{product.lprice}}</text>
+                             </view>
+                            </view>
+                            
+                        </view>
+                    </view>
+                </view>
+            </block>
+
+          </view>
+    </view>
+</view>

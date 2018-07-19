@@ -1,0 +1,2 @@
+<!--pages/discovery/discovery.wxml-->
+<image class="bth_image2" mode="aspectFit" bindtap="startAnimationInterval" animation="{{animation}}" src='/image/cart/0005018311587605_b.jpg'></image>

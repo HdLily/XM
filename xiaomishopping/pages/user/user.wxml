@@ -1,0 +1,52 @@
+<!--pages/user/user.wxml-->
+<view class='container'>
+   
+       
+            <view class='userInfo-wrap'>
+                <view class='userInfo-img-wrap'>
+                    <image src='{{userInfo.avatarUrl}}' class='userInfo-img'></image>
+                </view>
+                <view class='userInfo-message'>
+                    <text class='userInfo-name'>{{ userInfo.nickName }}</text>
+                    <text class='userInfo-uid'>小米账号:{{ micode }}</text>
+                </view>
+            
+                <view class='userInfo-qrcode-wrap'>
+                    <image src="{{ qrcodeSrc }}" class='userInfo-qrcode'></image>
+                </view>
+            </view>
+     
+    <!--用户信息区  -->
+    
+    <!--我的相关功能  -->
+    
+    <view class="weui-cells">
+        <navigator url="/pages/myorder/myorder" class="weui-cell weui-cell_access head" hover-class="weui-cell_active">
+            <view class="weui-cell__hd">
+                <image src="../../image/mine/icon_order.png" ></image>
+            </view>
+            <view class="weui-cell__bd">我的订单</view>
+        </navigator> 
+        <navigator url="" class="weui-cell weui-cell_access head" hover-class="weui-cell_active">
+            <view class="weui-cell__hd">
+                <image src="../../image/mine/icon_coupon.png" ></image>
+            </view>
+            <view class="weui-cell__bd">我的优惠券</view>
+        </navigator> 
+        <navigator url="" class="weui-cell weui-cell_access " hover-class="weui-cell_active">
+            <view class="weui-cell__hd">
+                <image src="../../image/mine/icon_fcode.png" ></image>
+            </view>
+            <view class="weui-cell__bd">我的F码</view>
+        </navigator> 
+    </view>
+    <view class="weui-cells">
+        <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__hd">
+                <image src="../../image/mine/icon_setting.png"></image>
+            </view>
+            <view class="weui-cell__bd">设置</view>
+        </navigator>
+    </view>
+    </view>
+    
